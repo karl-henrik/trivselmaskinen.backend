@@ -5,7 +5,7 @@
 
     Question
 	    Int QuestionId
-	    String Question
+	    String Text
 	   
 	Answer
 		DateTime TimeStamp
