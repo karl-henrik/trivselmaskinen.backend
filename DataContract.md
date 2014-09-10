@@ -12,10 +12,11 @@
 		String DeviceId
 		Int QuestionId
 		Decimal Value
-		Point X
-		Point Y
+		Position Position
 
-
+	Position
+		decimal Longitude
+		decimal Latitude
 
 Bool RegisterDevice(Device)
 
