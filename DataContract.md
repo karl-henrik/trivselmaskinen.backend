@@ -26,4 +26,4 @@ Question GetQuestion(DeviceId)
 > This call gets the current question from the service for the specified device. 
 
 Bool PostAnswer(Answer)
-> This function accepts answers to quetsions.
+> This function accepts answers to questions.
