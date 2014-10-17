@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "TrivselMaskinenSSIS", "TrivselMaskinenSSIS\TrivselMaskinenSSIS.dtproj", "{526836AC-0D1A-40F8-8AD8-C34FFF98C272}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{526836AC-0D1A-40F8-8AD8-C34FFF98C272}.Development|Default.ActiveCfg = Development
+		{526836AC-0D1A-40F8-8AD8-C34FFF98C272}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

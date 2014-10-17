@@ -1,0 +1,2245 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/30/2014 8:22:54 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="A01C01382W8"
+  DTS:CreatorName="SESOG\jhaglof"
+  DTS:DTSID="{3D199777-5E76-40B6-8BA2-24AC44C90BFA}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
+  DTS:LocaleID="1053"
+  DTS:ObjectName="Staging"
+  DTS:PackageType="5"
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{FE458591-14CA-44EF-A864-BEAFF7F7A11E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TrivselSourceDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FF524853-AAE1-4D1E-9F70-0BE17990CC23}"
+      DTS:ObjectName="TrivselSourceDB">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::Source_Database_ConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=TrivselMaskinenDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Staging Tables"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{5E83D414-DD46-451A-B0D9-DAE6CE4AA137}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Staging Tables">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Load Questions"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{C6B2EEFC-2D0C-436C-86B0-7CBB0F191DBD}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Questions"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Staging Tables\Load Questions\Read Questions"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Read Questions"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ServiceLayer].[Questions]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load Questions\Read Questions.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[TrivselSourceDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[TrivselSourceDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].Columns[QuestionID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].ExternalColumns[QuestionID]"
+                          lineageId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].Columns[QuestionID]"
+                          name="QuestionID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].Columns[Question]"
+                          dataType="nText"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].ExternalColumns[Question]"
+                          lineageId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].Columns[Question]"
+                          name="Question"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].ExternalColumns[QuestionID]"
+                          dataType="i4"
+                          name="QuestionID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].ExternalColumns[Question]"
+                          dataType="nText"
+                          name="Question" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                          dataType="dbTimeStamp2"
+                          name="Created"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output].Columns[QuestionID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output].Columns[QuestionID]"
+                          name="QuestionID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output].Columns[Question]"
+                          dataType="nText"
+                          lineageId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output].Columns[Question]"
+                          name="Question" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Write Staging_Questions"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Staging_Questions]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Connections[OleDbConnection]"
+                      connectionManagerID="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[TrivselStagingDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input].Columns[QuestionID]"
+                          cachedDataType="i4"
+                          cachedName="QuestionID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input].ExternalColumns[QuestionID]"
+                          lineageId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].Columns[QuestionID]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input].Columns[Question]"
+                          cachedDataType="nText"
+                          cachedName="Question"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input].ExternalColumns[Question]"
+                          lineageId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output].Columns[Question]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input].ExternalColumns[QuestionID]"
+                          dataType="i4"
+                          name="QuestionID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input].ExternalColumns[Question]"
+                          dataType="nText"
+                          name="Question" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Staging Tables\Load Questions.Paths[OLE DB Source Output]"
+                  endId="Package\Load Staging Tables\Load Questions\Write Staging_Questions.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Staging Tables\Load Questions\Read Questions.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Load QuestionScenarios"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F6D9AD64-BDB0-4988-9B1A-6032E2FDD3F6}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load QuestionScenarios"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Read QuestionScenarios"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ServiceLayer].[QuestionScenarios]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[TrivselSourceDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[TrivselSourceDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionScenarioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[QuestionScenarioID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionScenarioID]"
+                          name="QuestionScenarioID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[LocationID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[LocationID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[LocationID]"
+                          name="LocationID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[QuestionID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionID]"
+                          name="QuestionID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionTypeID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[QuestionTypeID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionTypeID]"
+                          name="QuestionTypeID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[QuestionScenarioID]"
+                          dataType="i4"
+                          name="QuestionScenarioID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[LocationID]"
+                          dataType="i4"
+                          name="LocationID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[QuestionID]"
+                          dataType="i4"
+                          name="QuestionID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[QuestionTypeID]"
+                          dataType="i4"
+                          name="QuestionTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                          dataType="dbTimeStamp2"
+                          name="Created"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[QuestionScenarioID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[QuestionScenarioID]"
+                          name="QuestionScenarioID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[LocationID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[LocationID]"
+                          name="LocationID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[QuestionID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[QuestionID]"
+                          name="QuestionID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[QuestionTypeID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[QuestionTypeID]"
+                          name="QuestionTypeID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Write Staging_QuestionScenarios"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging_QuestionScenarios]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Connections[OleDbConnection]"
+                      connectionManagerID="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[TrivselStagingDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].Columns[QuestionScenarioID]"
+                          cachedDataType="i4"
+                          cachedName="QuestionScenarioID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].ExternalColumns[QuestionScenarioID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionScenarioID]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].Columns[LocationID]"
+                          cachedDataType="i4"
+                          cachedName="LocationID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].ExternalColumns[LocationID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[LocationID]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].Columns[QuestionID]"
+                          cachedDataType="i4"
+                          cachedName="QuestionID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].ExternalColumns[QuestionID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionID]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].Columns[QuestionTypeID]"
+                          cachedDataType="i4"
+                          cachedName="QuestionTypeID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].ExternalColumns[QuestionTypeID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output].Columns[QuestionTypeID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].ExternalColumns[QuestionScenarioID]"
+                          dataType="i4"
+                          name="QuestionScenarioID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].ExternalColumns[LocationID]"
+                          dataType="i4"
+                          name="LocationID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].ExternalColumns[QuestionID]"
+                          dataType="i4"
+                          name="QuestionID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input].ExternalColumns[QuestionTypeID]"
+                          dataType="i4"
+                          name="QuestionTypeID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Staging Tables\Load QuestionScenarios.Paths[OLE DB Source Output]"
+                  endId="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Load QuestionTypes"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{041757D1-DF4C-4E36-B974-FE638BA7BD5B}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load QuestionTypes"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Read QuestionTypes"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ServiceLayer].[QuestionTypes]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[TrivselSourceDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[TrivselSourceDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].Columns[QuestionTypeID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].ExternalColumns[QuestionTypeID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].Columns[QuestionTypeID]"
+                          name="QuestionTypeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].Columns[QuestionType]"
+                          dataType="nText"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].ExternalColumns[QuestionType]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].Columns[QuestionType]"
+                          name="QuestionType"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].ExternalColumns[QuestionTypeID]"
+                          dataType="i4"
+                          name="QuestionTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].ExternalColumns[QuestionType]"
+                          dataType="nText"
+                          name="QuestionType" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                          dataType="dbTimeStamp2"
+                          name="Created"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output].Columns[QuestionTypeID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output].Columns[QuestionTypeID]"
+                          name="QuestionTypeID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output].Columns[QuestionType]"
+                          dataType="nText"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output].Columns[QuestionType]"
+                          name="QuestionType" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Write Staging_QuestionTypes"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging_QuestionTypes]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Connections[OleDbConnection]"
+                      connectionManagerID="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[TrivselStagingDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input].Columns[QuestionTypeID]"
+                          cachedDataType="i4"
+                          cachedName="QuestionTypeID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input].ExternalColumns[QuestionTypeID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].Columns[QuestionTypeID]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input].Columns[QuestionType]"
+                          cachedDataType="nText"
+                          cachedName="QuestionType"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input].ExternalColumns[QuestionType]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output].Columns[QuestionType]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input].ExternalColumns[QuestionTypeID]"
+                          dataType="i4"
+                          name="QuestionTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input].ExternalColumns[QuestionType]"
+                          dataType="nText"
+                          name="QuestionType" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Staging Tables\Load QuestionTypes.Paths[OLE DB Source Output]"
+                  endId="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Load QuestionTypeValues"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F591C860-870A-4E4C-AABE-DC673B95C2BD}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load QuestionTypeValues"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Read QuestionTypeValues"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ServiceLayer].[QuestionTypeValues]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[TrivselSourceDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[TrivselSourceDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[QuestionTypeID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].ExternalColumns[QuestionTypeID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[QuestionTypeID]"
+                          name="QuestionTypeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[Value]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[Value]"
+                          name="Value"
+                          precision="4"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[ValueLabel]"
+                          dataType="nText"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].ExternalColumns[ValueLabel]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[ValueLabel]"
+                          name="ValueLabel"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].ExternalColumns[QuestionTypeID]"
+                          dataType="i4"
+                          name="QuestionTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                          dataType="numeric"
+                          name="Value"
+                          precision="4"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].ExternalColumns[ValueLabel]"
+                          dataType="nText"
+                          name="ValueLabel" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                          dataType="dbTimeStamp2"
+                          name="Created"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[QuestionTypeID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[QuestionTypeID]"
+                          name="QuestionTypeID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[Value]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[Value]"
+                          name="Value"
+                          precision="4"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[ValueLabel]"
+                          dataType="nText"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[ValueLabel]"
+                          name="ValueLabel" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Write Staging_QuestionTypeValues"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging_QuestionTypeValues]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Connections[OleDbConnection]"
+                      connectionManagerID="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[TrivselStagingDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].Columns[QuestionTypeID]"
+                          cachedDataType="i4"
+                          cachedName="QuestionTypeID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].ExternalColumns[QuestionTypeID]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[QuestionTypeID]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].Columns[Value]"
+                          cachedDataType="numeric"
+                          cachedName="Value"
+                          cachedPrecision="4"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[Value]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].Columns[ValueLabel]"
+                          cachedDataType="nText"
+                          cachedName="ValueLabel"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].ExternalColumns[ValueLabel]"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output].Columns[ValueLabel]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].ExternalColumns[QuestionTypeID]"
+                          dataType="i4"
+                          name="QuestionTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                          dataType="numeric"
+                          name="Value"
+                          precision="4"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input].ExternalColumns[ValueLabel]"
+                          dataType="nText"
+                          name="ValueLabel" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Staging Tables\Load QuestionTypeValues.Paths[OLE DB Source Output]"
+                  endId="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Load RawValues"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{96DC2592-1AB0-4EF9-AC6A-EF8EEC6D0687}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load RawValues"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Staging Tables\Load RawValues\Read RawValues"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Read RawValues"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DeviceLayer].[RawValues]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[TrivselSourceDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[TrivselSourceDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[QuestionScenarioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[QuestionScenarioID]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[QuestionScenarioID]"
+                          name="QuestionScenarioID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[ValueTime]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[ValueTime]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[ValueTime]"
+                          name="ValueTime"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[DeviceID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[DeviceID]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[DeviceID]"
+                          name="DeviceID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[Value]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[Value]"
+                          name="Value"
+                          precision="4"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[Position]"
+                          dataType="image"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[Position]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[Position]"
+                          name="Position"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[QuestionScenarioID]"
+                          dataType="i4"
+                          name="QuestionScenarioID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[ValueTime]"
+                          dataType="dbTimeStamp2"
+                          name="ValueTime"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[DeviceID]"
+                          dataType="i4"
+                          name="DeviceID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                          dataType="numeric"
+                          name="Value"
+                          precision="4"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[Position]"
+                          dataType="image"
+                          name="Position" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                          dataType="dbTimeStamp2"
+                          name="Created"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[QuestionScenarioID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[QuestionScenarioID]"
+                          name="QuestionScenarioID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[ValueTime]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[ValueTime]"
+                          name="ValueTime"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[DeviceID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[DeviceID]"
+                          name="DeviceID" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[Value]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[Value]"
+                          name="Value"
+                          precision="4"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[Position]"
+                          dataType="image"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[Position]"
+                          name="Position" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Staging Tables\Load RawValues\Write RawValues"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Write RawValues"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Staging_RawValues]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Connections[OleDbConnection]"
+                      connectionManagerID="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[TrivselStagingDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].Columns[QuestionScenarioID]"
+                          cachedDataType="i4"
+                          cachedName="QuestionScenarioID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[QuestionScenarioID]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[QuestionScenarioID]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].Columns[ValueTime]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="ValueTime"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[ValueTime]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[ValueTime]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].Columns[DeviceID]"
+                          cachedDataType="i4"
+                          cachedName="DeviceID"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[DeviceID]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[DeviceID]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].Columns[Value]"
+                          cachedDataType="numeric"
+                          cachedName="Value"
+                          cachedPrecision="4"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[Value]" />
+                        <inputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].Columns[Position]"
+                          cachedDataType="image"
+                          cachedName="Position"
+                          externalMetadataColumnId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[Position]"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output].Columns[Position]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[QuestionScenarioID]"
+                          dataType="i4"
+                          name="QuestionScenarioID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[ValueTime]"
+                          dataType="dbTimeStamp2"
+                          name="ValueTime"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[DeviceID]"
+                          dataType="i4"
+                          name="DeviceID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                          dataType="numeric"
+                          name="Value"
+                          precision="4"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input].ExternalColumns[Position]"
+                          dataType="image"
+                          name="Position" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Write RawValues.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging Tables\Load RawValues\Write RawValues.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging Tables\Load RawValues\Write RawValues.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Staging Tables\Load RawValues.Paths[OLE DB Source Output]"
+                  endId="Package\Load Staging Tables\Load RawValues\Write RawValues.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Staging Tables\Load RawValues\Read RawValues.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Truncate Questions"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1CDE6C39-8B9A-4309-820B-CA6403C9E332}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Questions"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_Questions;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Truncate QuestionScenarios"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7DBD4603-CFBB-4D21-B22A-588A94883F7D}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate QuestionScenarios"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_QuestionScenarios;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Truncate QuestionTypes"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C2A2316C-0BA5-4115-98BB-6C9A40E28AB3}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate QuestionTypes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_QuestionTypes;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Truncate QuestionTypeValues"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2da3e196-3dfb-406d-88dd-8a65394c39e7}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate QuestionTypeValues"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_QuestionTypeValues;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging Tables\Truncate RawValues"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DDF0D68F-8F9D-410A-A6BB-A3EB738F8F70}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate RawValues"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CC48A95D-2A5F-44B3-B89C-F1E891259EF0}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_RawValues;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Staging Tables.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{FCBF3BCF-48B2-41B8-8443-B757657AF690}"
+          DTS:From="Package\Load Staging Tables\Truncate QuestionTypeValues"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Load Staging Tables\Load QuestionTypeValues" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Staging Tables.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{AFB1326E-86A1-4AE8-ADB2-59C7A62C4A86}"
+          DTS:From="Package\Load Staging Tables\Truncate QuestionTypes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Load Staging Tables\Load QuestionTypes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Staging Tables.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{493738A6-87C5-42FA-976C-730F45252F70}"
+          DTS:From="Package\Load Staging Tables\Truncate QuestionScenarios"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Load Staging Tables\Load QuestionScenarios" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Staging Tables.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{BB9CBFB7-E686-4C6B-8A90-8C808EFC7C56}"
+          DTS:From="Package\Load Staging Tables\Truncate Questions"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Load Staging Tables\Load Questions" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Staging Tables.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{9BBAF594-3DE6-4B07-ACFD-93A00DB673B8}"
+          DTS:From="Package\Load Staging Tables\Truncate RawValues"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Load Staging Tables\Load RawValues" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Load Staging Tables\Load Questions"
+          TopLeft="349.944444444444,162.666666666667" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Load Staging Tables\Load QuestionScenarios"
+          TopLeft="349.944444444444,301.166666666667" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Load Staging Tables\Load QuestionTypes"
+          TopLeft="349.944444444444,93.177047289504" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Load Staging Tables\Load QuestionTypeValues"
+          TopLeft="349.944444444444,26.1666666666666" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Load Staging Tables\Load RawValues"
+          TopLeft="349.944444444444,235.202259887006" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Load Staging Tables\Truncate Questions"
+          TopLeft="40.4444444444444,163.166666666667" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Load Staging Tables\Truncate QuestionScenarios"
+          TopLeft="40.4444444444444,300.166666666667" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Load Staging Tables\Truncate QuestionTypes"
+          TopLeft="40.4444444444444,94.177047289504" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Load Staging Tables\Truncate QuestionTypeValues"
+          TopLeft="40.4444444444444,27.6666666666667" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Load Staging Tables\Truncate RawValues"
+          TopLeft="40.4444444444444,232.166666666667" />
+        <EdgeLayout
+          Id="Package\Load Staging Tables.PrecedenceConstraints[Constraint 1]"
+          TopLeft="259.444444444444,47.9166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.4999999999999,0"
+              Start="0,0"
+              End="82.9999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.9999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Staging Tables.PrecedenceConstraints[Constraint 2]"
+          TopLeft="259.444444444444,114.677047289504">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.4999999999999,0"
+              Start="0,0"
+              End="82.9999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.9999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Staging Tables.PrecedenceConstraints[Constraint 3]"
+          TopLeft="259.444444444444,321.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.4999999999999,0"
+              Start="0,0"
+              End="82.9999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.9999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Staging Tables.PrecedenceConstraints[Constraint 4]"
+          TopLeft="259.444444444444,183.916666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.4999999999999,0"
+              Start="0,0"
+              End="82.9999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.9999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Staging Tables.PrecedenceConstraints[Constraint 5]"
+          TopLeft="259.444444444444,254.684463276836">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.4999999999999,0"
+              Start="0,0"
+              End="82.9999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.9999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="608,476"
+          Size="608,519"
+          Id="Package\Load Staging Tables"
+          TopLeft="62.7222222222224,17.7222222222222" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Staging Tables\Load Questions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Load Staging Tables\Load Questions\Write Staging_Questions"
+          TopLeft="11.5,93.5" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Load Staging Tables\Load Questions\Read Questions"
+          TopLeft="28.5,3.5" />
+        <EdgeLayout
+          Id="Package\Load Staging Tables\Load Questions.Paths[OLE DB Source Output]"
+          TopLeft="106.75,45.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load Questions\Read Questions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load Questions\Write Staging_Questions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Staging Tables\Load QuestionScenarios">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios"
+          TopLeft="12.5,106.5" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios"
+          TopLeft="28.5,6.5" />
+        <EdgeLayout
+          Id="Package\Load Staging Tables\Load QuestionScenarios.Paths[OLE DB Source Output]"
+          TopLeft="127.5,48.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load QuestionScenarios\Read QuestionScenarios">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load QuestionScenarios\Write Staging_QuestionScenarios">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Staging Tables\Load QuestionTypes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes"
+          TopLeft="8.5,97.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes"
+          TopLeft="25.5,7.5" />
+        <EdgeLayout
+          Id="Package\Load Staging Tables\Load QuestionTypes.Paths[OLE DB Source Output]"
+          TopLeft="115.25,49.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load QuestionTypes\Read QuestionTypes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load QuestionTypes\Write Staging_QuestionTypes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Staging Tables\Load QuestionTypeValues">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues"
+          TopLeft="8.5,111.5" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues"
+          TopLeft="25.5,4.5" />
+        <EdgeLayout
+          Id="Package\Load Staging Tables\Load QuestionTypeValues.Paths[OLE DB Source Output]"
+          TopLeft="128.25,46.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load QuestionTypeValues\Read QuestionTypeValues">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load QuestionTypeValues\Write Staging_QuestionTypeValues">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Staging Tables\Load RawValues">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load Staging Tables\Load RawValues\Write RawValues"
+          TopLeft="8,119" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Staging Tables\Load RawValues\Read RawValues"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package\Load Staging Tables\Load RawValues.Paths[OLE DB Source Output]"
+          TopLeft="85.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.5"
+              Start="0,0"
+              End="0,64">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load RawValues\Read RawValues">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging Tables\Load RawValues\Write RawValues">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
